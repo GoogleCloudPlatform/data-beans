@@ -50,7 +50,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Customer-Reviews-Detect-Themes-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Customer-Reviews-Detect-Themes-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Customer-Reviews-Detect-Themes-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vQQS7VAZBDXy3_68cf7GbOm8ZjTwlpr7Z65GbRfyxk89g43XL0s3ZBHUbe9ChqaDT_3pVw8qZpH0HkU/embed'
     );
 
@@ -72,7 +72,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Customer-Reviews-Generate-Customer-Response-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Customer-Reviews-Generate-Customer-Response-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Customer-Reviews-Generate-Customer-Response-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vQQS7VAZBDXy3_68cf7GbOm8ZjTwlpr7Z65GbRfyxk89g43XL0s3ZBHUbe9ChqaDT_3pVw8qZpH0HkU/embed'
     );
 
@@ -94,7 +94,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Customer-Reviews-Generate-Insight-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Customer-Reviews-Generate-Insight-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Customer-Reviews-Generate-Insight-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vQQS7VAZBDXy3_68cf7GbOm8ZjTwlpr7Z65GbRfyxk89g43XL0s3ZBHUbe9ChqaDT_3pVw8qZpH0HkU/embed'
     );    
 
@@ -116,7 +116,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Customer-Reviews-Generate-Recommended-Action-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Customer-Reviews-Generate-Recommended-Action-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Customer-Reviews-Generate-Recommended-Action-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vQQS7VAZBDXy3_68cf7GbOm8ZjTwlpr7Z65GbRfyxk89g43XL0s3ZBHUbe9ChqaDT_3pVw8qZpH0HkU/embed'
     );    
 
@@ -140,7 +140,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Customer-Reviews-Synthetic-Data-Generation-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Customer-Reviews-Synthetic-Data-Generation-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Customer-Reviews-Synthetic-Data-Generation-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vQQS7VAZBDXy3_68cf7GbOm8ZjTwlpr7Z65GbRfyxk89g43XL0s3ZBHUbe9ChqaDT_3pVw8qZpH0HkU/embed'
     );
     
@@ -163,7 +163,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Customer-Reviews-Word-Cloud.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Customer-Reviews-Word-Cloud.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Customer-Reviews-Word-Cloud.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vS6XfWwpeepjDhF3xSKtI_P3mNd5LE1aDoHxsfsZLs5fuCEfYw6YxrSoqBHESIgqHmQ12nef5fvWHIR/embed'
     );      
 
@@ -189,7 +189,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Event-Generate-Insight-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Event-Generate-Insight-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Event-Generate-Insight-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vSWHhR-JCN1R3YyF9MLPCkxCteQ-pwj4l_sXoD03KFk1Cok8vRcVYRHwTsQ1J3nyBQcBl_1wKVYHNSo/embed'
     );      
 
@@ -213,7 +213,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Event-Populate-Table.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Event-Populate-Table.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Event-Populate-Table.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vSWHhR-JCN1R3YyF9MLPCkxCteQ-pwj4l_sXoD03KFk1Cok8vRcVYRHwTsQ1J3nyBQcBl_1wKVYHNSo/embed'
     );        
 
@@ -239,7 +239,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Marketing-Campaign-Generate-Insight-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Marketing-Campaign-Generate-Insight-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Marketing-Campaign-Generate-Insight-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vS7ZGxvsniOZb4NF4fLliF8xB5oYXAmk3vlmb7v5EId6aOw6OgNs23NSdt_68nv9wLzWFo57Xy5lOcz/embed'
     );      
 
@@ -265,7 +265,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Menu-A-B-Testing-Generate-Insight-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Menu-Synthetic-Data-Generation-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Menu-Synthetic-Data-Generation-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vRbqlPV3jxPS37-BOFWqz_CG19g6p4_SZMA7xO2SViPN-nNQH5DUiWAc-eE3BbF6RkdZjnGLU6ZjzAb/embed'
     );         
 
@@ -290,7 +290,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Menu-Synthetic-Data-Generation-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Menu-Teaser.mp4',
     'https://youtu.be/YIzhbGZMoLA',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Menu-Synthetic-Data-Generation-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Menu-Synthetic-Data-Generation-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vQjZPqarJhhHnmo4z3sIPyBO0IYwNHR3jN0NrBAGTVvj60E6bHT_1F-0lAdiN0GUJ1YtraNK8hnN6rn/embed'
     );         
 
@@ -319,7 +319,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Weather-Generate-Insight-GenAI.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Weather-Generate-Insight-GenAI.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Weather-Generate-Insight-GenAI.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vR5654qtQHaSutKyFb6rfIk4XybZDRXhsZGRIAfl7A0TK17Yrn_ENv_RHb9z0JC69F2PsEY3siEaIJ8/embed'
     );      
 
@@ -344,7 +344,7 @@ VALUES (
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/artifacts/Weather-Populate-Table.png',
     'https://storage.googleapis.com/data-analytics-golden-demo/data-beans/v1/youtube-videos/Data-Beans-Marketing-Teaser.mp4',
     'https://youtu.be/hb-hfK4k204',
-    'https://github.com/GoogleCloudPlatform/data-beans/colab-enterprise/gen-ai-demo/Weather-Populate-Table.ipynb',
+    'https://github.com/GoogleCloudPlatform/data-beans/blob/main/colab-enterprise/gen-ai-demo/Weather-Populate-Table.ipynb',
     'https://docs.google.com/presentation/d/e/2PACX-1vR5654qtQHaSutKyFb6rfIk4XybZDRXhsZGRIAfl7A0TK17Yrn_ENv_RHb9z0JC69F2PsEY3siEaIJ8/embed'
     );        
 
