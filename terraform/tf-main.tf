@@ -46,7 +46,7 @@ terraform {
   required_providers {
     google = {
       source                = "hashicorp/google-beta"
-      version               = "4.42.0"
+      version               = ">= 4.52, < 6"
       configuration_aliases = [google.service_principal_impersonation]
     }
   }
@@ -285,6 +285,40 @@ module "deploy-files-module" {
     module.resources
   ]
 }
+
+
+
+####################################################################################
+# Deploy notebooks to Colab (Dataform)
+####################################################################################
+module "deploy-notebooks-module" {
+  source = "../terraform-modules/colab-deployment/terraform-module"
+
+  # Use Service Account Impersonation for this step. 
+  providers = { google = google.service_principal_impersonation }
+
+  project_id                          = local.local_project_id
+  vertex_ai_region                    = var.vertex_ai_region
+  bigquery_data_beans_curated_dataset = var.bigquery_data_beans_curated_dataset
+  data_beans_curated_bucket           = local.data_beans_curated_bucket
+  data_beans_code_bucket              = local.code_bucket
+  dataform_region                     = "us-central1"
+  cloud_function_region               = "us-central1"
+  workflow_region                     = "us-central1"
+  random_extension                    = random_string.project_random.result
+  gcp_account_name                    = var.gcp_account_name
+  curl_impersonation                  = local.local_curl_impersonation
+
+  depends_on = [
+    module.project,
+    module.service-account,
+    module.apis-batch-enable,
+    time_sleep.service_account_api_activation_time_delay,
+    module.org-policies,
+    module.resources
+  ]
+}
+
 
 
 ####################################################################################

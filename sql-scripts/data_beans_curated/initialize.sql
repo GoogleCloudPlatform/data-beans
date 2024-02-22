@@ -39,7 +39,12 @@ CREATE OR REPLACE MODEL `${project_id}.${bigquery_data_beans_curated_dataset}.ll
   REMOTE WITH CONNECTION `${project_id}.us.vertex-ai`
   OPTIONS (endpoint = 'text-bison-32k@002');
 
+CREATE MODEL IF NOT EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.gemini_pro`
+  REMOTE WITH CONNECTION `${project_id}.us.vertex-ai`
+  OPTIONS (endpoint = 'gemini-pro');
 
+
+/*
 CREATE OR REPLACE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.artifact`                       COPY `${project_id}.${data_beans_analytics_hub}.artifact`;
 CREATE OR REPLACE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.city`                           COPY `${project_id}.${data_beans_analytics_hub}.city`;
 CREATE OR REPLACE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_processor`               COPY `${project_id}.${data_beans_analytics_hub}.coffee_processor`;
@@ -65,6 +70,34 @@ CREATE OR REPLACE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.we
 CREATE OR REPLACE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.weather_gen_ai_insight`         COPY `${project_id}.${data_beans_analytics_hub}.weather_gen_ai_insight` ;
 CREATE OR REPLACE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review_gen_ai_insight` COPY `${project_id}.${data_beans_analytics_hub}.customer_review_gen_ai_insight` ;
 CREATE OR REPLACE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.marketing_gen_ai_insight`       COPY `${project_id}.${data_beans_analytics_hub}.marketing_gen_ai_insight` ;  
+*/
+
+
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.artifact` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/artifact/artifact_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city/city_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city_location/city_location_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location_address` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city_location_address/city_location_address_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_farm` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_farm/coffee_farm_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_processor` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_processor/coffee_processor_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_roaster` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_roaster/coffee_roaster_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.company` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/company/company_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer/customer_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_profile` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_profile/customer_profile_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_review/customer_review_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_review_gen_ai_insight/customer_review_gen_ai_insight_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.event` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/event/event_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.event_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/event_gen_ai_insight/event_gen_ai_insight_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.location` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/location/location_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.location_history` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/location_history/location_history_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.marketing_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/marketing_gen_ai_insight/marketing_gen_ai_insight_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/menu/menu_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu_a_b_testing` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/menu_a_b_testing/menu_a_b_testing_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/order/order_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order_item` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/order_item/order_item_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.sales_forecast` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/sales_forecast/sales_forecast_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.video_processing` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/video_processing/video_processing_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.weather` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/weather/weather_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.weather_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/weather_gen_ai_insight/weather_gen_ai_insight_*.avro']);
 
 ALTER TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.city`                           ADD PRIMARY KEY (city_id) NOT ENFORCED; 
 ALTER TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_processor`               ADD PRIMARY KEY (coffee_processor_id) NOT ENFORCED; 

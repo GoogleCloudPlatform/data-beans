@@ -30,4 +30,4 @@ Clean up / Reset script:
 
 */
 
-SAFE.PARSE_JSON(REPLACE(REPLACE(JSON_VALUE(input, '$.predictions[0].content'),"```json",""),"```",""))
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(JSON_VALUE(input.candidates[0].content.parts[0].text),'\n',' '),'\"','"'),'``` JSON',''),'```json',''),'```','')

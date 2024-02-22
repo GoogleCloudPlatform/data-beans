@@ -25,7 +25,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google-beta"
-      version = "4.42.0"
+      version = ">= 4.52, < 6"
     }
   }
 }
@@ -182,6 +182,21 @@ resource "google_storage_bucket_object" "Marketing-Campaign-Generate-Insight-Gen
   name   = "colab-enterprise/gen-ai-demo/Marketing-Campaign-Generate-Insight-GenAI.ipynb"
   bucket = var.data_beans_code_bucket
   content = templatefile("../colab-enterprise/gen-ai-demo/Marketing-Campaign-Generate-Insight-GenAI.ipynb", 
+  { 
+    project_id = var.project_id
+    vertex_ai_region = var.vertex_ai_region
+    bigquery_data_beans_curated_dataset = var.bigquery_data_beans_curated_dataset
+    data_beans_curated_bucket = var.data_beans_curated_bucket
+    data_beans_code_bucket = var.data_beans_code_bucket
+  })
+  depends_on = []  
+}
+
+
+resource "google_storage_bucket_object" "Menu-A-B-Testing-Generate-Campaign-GenAI" {
+  name   = "colab-enterprise/gen-ai-demo/Menu-A-B-Testing-Generate-Campaign-GenAI.ipynb"
+  bucket = var.data_beans_code_bucket
+  content = templatefile("../colab-enterprise/gen-ai-demo/Menu-A-B-Testing-Generate-Campaign-GenAI.ipynb", 
   { 
     project_id = var.project_id
     vertex_ai_region = var.vertex_ai_region

@@ -25,7 +25,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google-beta"
-      version = "4.42.0"
+      version = ">= 4.52, < 6"
     }
   }
 }
@@ -61,6 +61,7 @@ variable "data_beans_analytics_hub" {}
 # UDFs
 ####################################################################################
 resource "google_bigquery_routine" "clean_llm_json" {
+  project         = var.project_id
   dataset_id      = var.bigquery_data_beans_curated_dataset
   routine_id      = "clean_llm_json"
   routine_type    = "SCALAR_FUNCTION"
@@ -82,6 +83,7 @@ resource "google_bigquery_routine" "clean_llm_json" {
 }
 
 resource "google_bigquery_routine" "clean_llm_text" {
+  project         = var.project_id
   dataset_id      = var.bigquery_data_beans_curated_dataset
   routine_id      = "clean_llm_text"
   routine_type    = "SCALAR_FUNCTION"
@@ -102,10 +104,58 @@ resource "google_bigquery_routine" "clean_llm_text" {
   return_type = "{\"typeKind\" :  \"STRING\"}"
 }
 
+
+resource "google_bigquery_routine" "clean_llmgemini_pro_result_as_json_json" {
+  project         = var.project_id
+  dataset_id      = var.bigquery_data_beans_curated_dataset
+  routine_id      = "gemini_pro_result_as_json"
+  routine_type    = "SCALAR_FUNCTION"
+  language        = "SQL"
+
+  definition_body = templatefile("../sql-scripts/data_beans_curated/gemini_pro_result_as_json.sql", 
+  { 
+    project_id = var.project_id
+    bigquery_data_beans_curated_dataset = var.bigquery_data_beans_curated_dataset
+  })
+
+  arguments {
+    name          = "input"
+    argument_kind = "FIXED_TYPE"
+    data_type     = jsonencode({ "typeKind" : "JSON" })
+  }
+
+  return_type = "{\"typeKind\" :  \"JSON\"}"
+}
+
+
+resource "google_bigquery_routine" "gemini_pro_result_as_string" {
+  project         = var.project_id
+  dataset_id      = var.bigquery_data_beans_curated_dataset
+  routine_id      = "gemini_pro_result_as_string"
+  routine_type    = "SCALAR_FUNCTION"
+  language        = "SQL"
+
+  definition_body = templatefile("../sql-scripts/data_beans_curated/gemini_pro_result_as_string.sql", 
+  { 
+    project_id = var.project_id
+    bigquery_data_beans_curated_dataset = var.bigquery_data_beans_curated_dataset
+  })
+
+  arguments {
+    name          = "input"
+    argument_kind = "FIXED_TYPE"
+    data_type     = jsonencode({ "typeKind" : "JSON" })
+  }
+  
+  return_type = "{\"typeKind\" :  \"STRING\"}"
+}
+
+
 ####################################################################################
 # Stored Procedures
 ####################################################################################
 resource "google_bigquery_routine" "initialize" {
+  project         = var.project_id
   dataset_id      = var.bigquery_data_beans_curated_dataset
   routine_id      = "initialize"
   routine_type    = "PROCEDURE"
@@ -115,5 +165,45 @@ resource "google_bigquery_routine" "initialize" {
     project_id = var.project_id
     bigquery_data_beans_curated_dataset = var.bigquery_data_beans_curated_dataset
     data_beans_analytics_hub = var.data_beans_analytics_hub
+    data_beans_curated_bucket = var.data_beans_curated_bucket
   })
 }
+
+
+####################################################################################
+# Invoke Initalize SP
+####################################################################################
+/* THIS RUNS OVER AND OVER AGAIN (for each TF execution) WHICH WILL OVERWRITE THE DATA
+data "google_client_config" "current" {
+}
+
+# Call the BigQuery initialize stored procedure to initialize the system
+data "http" "call_sp_initialize" {
+  url    = "https://bigquery.googleapis.com/bigquery/v2/projects/${var.project_id}/jobs"
+  method = "POST"
+  request_headers = {
+    Accept = "application/json"
+  Authorization = "Bearer ${data.google_client_config.current.access_token}" }
+  request_body = "{\"configuration\":{\"query\":{\"query\":\"CALL `${var.project_id}.${var.bigquery_data_beans_curated_dataset}.initialize`();\",\"useLegacySql\":false}}}"
+  depends_on = [
+     google_bigquery_routine.initialize
+  ]
+}
+*/
+
+resource "null_resource" "call_sp_initialize" {
+  provisioner "local-exec" {
+    when    = create
+    command = <<EOF
+  curl -X POST \
+  https://bigquery.googleapis.com/bigquery/v2/projects/${var.project_id}/jobs \
+  --header "Authorization: Bearer $(gcloud auth print-access-token ${var.curl_impersonation})" \
+  --header "Content-Type: application/json" \
+  --data '{ "configuration" : { "query" : { "query" : "CALL `${var.project_id}.${var.bigquery_data_beans_curated_dataset}.initialize`();", "useLegacySql" : false } } }'
+EOF
+  }
+  depends_on = [
+    google_bigquery_routine.initialize
+  ]
+}
+

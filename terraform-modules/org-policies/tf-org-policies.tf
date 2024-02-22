@@ -26,7 +26,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google-beta"
-      version = "4.42.0"
+      version = ">= 4.52, < 6"
     }
   }
 }
@@ -42,6 +42,7 @@ variable "project_id" {}
 # Organizational Policies 
 ####################################################################################
 # Needed for Colab Enterprise notebooks
+/*
 resource "google_org_policy_policy" "org_policy_require_shielded_vm" {
   name     = "projects/${var.project_id}/policies/compute.requireShieldedVm"
   parent   = "projects/${var.project_id}"
@@ -52,7 +53,7 @@ resource "google_org_policy_policy" "org_policy_require_shielded_vm" {
     }
   }
 }
-
+*/
 
 # To set service accounts (since sometimes they cause a voliation)
 /*
@@ -74,6 +75,7 @@ resource "google_org_policy_policy" "org_policy_allowed_policy_member_domains" {
 # https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep
 # The org policies take some time to proprogate.  
 # If you do not wait the below resource will fail.
+/*
 resource "time_sleep" "time_sleep_org_policies" {
   create_duration = "90s"
 
@@ -81,3 +83,4 @@ resource "time_sleep" "time_sleep_org_policies" {
     google_org_policy_policy.org_policy_require_shielded_vm,
   ]
 }
+*/

@@ -205,45 +205,44 @@ then
     gsutil cp terraform.tfstate "gs://${terraform_output_bucket}/terraform/state/"
   fi
 
-  # Copy the EMPTY org policies over the existing one
-  # Run Terraform apply again to then revert the org policies back to "inherit from parent"
-  if [ -f "../terraform-modules/org-policies/tf-org-policies-original.txt" ]; then
-    echo "The Org Policies file has already been replaced"
-  else
-    echo "Replacing the Org Policies file and revoking the policy exceptions used during the deployment"
-    mv ../terraform-modules/org-policies/tf-org-policies.tf ../terraform-modules/org-policies/tf-org-policies-original.txt
-    cp ../terraform-modules/org-policies-destroy/tf-org-policies.tf ../terraform-modules/org-policies/tf-org-policies.tf
+  # # Copy the EMPTY org policies over the existing one
+  # # Run Terraform apply again to then revert the org policies back to "inherit from parent"
+  # if [ -f "../terraform-modules/org-policies/tf-org-policies-original.txt" ]; then
+  #   echo "The Org Policies file has already been replaced"
+  # else
+  #   echo "Replacing the Org Policies file and revoking the policy exceptions used during the deployment"
+  #   mv ../terraform-modules/org-policies/tf-org-policies.tf ../terraform-modules/org-policies/tf-org-policies-original.txt
+  #   cp ../terraform-modules/org-policies-destroy/tf-org-policies.tf ../terraform-modules/org-policies/tf-org-policies.tf
 
-    echo "Start Terraform (Org Policies Revoke)"
-    echo $(date)
-    echo ""
+  #   echo "Start Terraform (Org Policies Revoke)"
+  #   echo $(date)
+  #   echo ""
 
-    start=$(date)
+  #   start=$(date)
 
-    # Run the Terraform Apply (to destroy the org policies)
-    terraform apply -auto-approve \
-      -var="gcp_account_name=${gcp_account_name}" \
-      -var="org_id=${org_id}" \
-      -var="billing_account=${billing_account}" \
-      -var="project_id=data-beans-demo" \
-      -var="shared_demo_project_id=${shared_demo_project_id}" \
-      -var="aws_omni_biglake_s3_bucket=${aws_omni_biglake_s3_bucket}" \
-      -var="azure_omni_biglake_adls_name=${azure_omni_biglake_adls_name}"
+  #   # Run the Terraform Apply (to destroy the org policies)
+  #   terraform apply -auto-approve \
+  #     -var="gcp_account_name=${gcp_account_name}" \
+  #     -var="org_id=${org_id}" \
+  #     -var="billing_account=${billing_account}" \
+  #     -var="project_id=data-beans-demo" \
+  #     -var="shared_demo_project_id=${shared_demo_project_id}" \
+  #     -var="aws_omni_biglake_s3_bucket=${aws_omni_biglake_s3_bucket}" \
+  #     -var="azure_omni_biglake_adls_name=${azure_omni_biglake_adls_name}"
 
-    # Move the files back so Git does not check in the wrong file
-    # Also, if we do another deployment we want to disable the policies so we do not interfere with the deployment
-    # and then re-enable them.
-    rm ../terraform-modules/org-policies/tf-org-policies.tf
-    mv ../terraform-modules/org-policies/tf-org-policies-original.txt ../terraform-modules/org-policies/tf-org-policies.tf
+  #   # Move the files back so Git does not check in the wrong file
+  #   # Also, if we do another deployment we want to disable the policies so we do not interfere with the deployment
+  #   # and then re-enable them.
+  #   rm ../terraform-modules/org-policies/tf-org-policies.tf
+  #   mv ../terraform-modules/org-policies/tf-org-policies-original.txt ../terraform-modules/org-policies/tf-org-policies.tf
 
-    echo "Terraform Times"
-    stop=$(date)
-    echo "Start time: ${start}"
-    echo "Stop  time: ${stop}"
-    echo ""
+  #   echo "Terraform Times"
+  #   stop=$(date)
+  #   echo "Start time: ${start}"
+  #   echo "Stop  time: ${stop}"
+  #   echo ""
 
-
-  fi  
+  # fi  
 fi
 
 cd ..
