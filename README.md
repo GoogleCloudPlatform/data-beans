@@ -17,7 +17,6 @@ The are two options to deploy the demo depending on your access privilages to yo
 ### To deploy to New Project (Requires Elevated Privileges)
 - **The following IAM roles are required to deploy the solution**
    - Prerequisite:  Billing Account User (to create the project with billing)
-   - Prerequisite:  Organization Administrator (to create all assets)
    - Optional:      Folder Editor (if you alter the script to place the project in a folder)
 1. Open a Google Cloud Shell: http://shell.cloud.google.com/
 2. Type: ```git clone https://github.com/GoogleCloudPlatform/data-beans```
