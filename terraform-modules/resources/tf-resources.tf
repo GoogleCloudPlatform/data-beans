@@ -315,6 +315,9 @@ EOF
 ####################################################################################
 # Copy Data
 ####################################################################################
+/* 
+-- NOT NEEDED - USING LOAD COMMAND DIRECTLY FROM PUBLIC STORAGE
+
 # Define the list of notebook files to be created
 locals {
   file_names = [ 
@@ -442,6 +445,7 @@ resource "null_resource" "copy_data_files" {
   }
   depends_on = [  google_storage_bucket.google_storage_bucket_data_beans_curated_bucket ]
 }
+*/
 
 ####################################################################################
 # Outputs
