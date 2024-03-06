@@ -37,7 +37,9 @@ variable "cloud_function_region" {}
 variable "workflow_region" {}
 variable "random_extension" {}
 variable "gcp_account_name" {}
-variable "curl_impersonation" {}
+
+data "google_client_config" "current" {
+}
 
 
 # Define the list of notebook files to be created
@@ -323,13 +325,14 @@ data "http" "call_workflows_setup" {
 }
 */
 
+
 resource "null_resource" "execute_workflow" {
   provisioner "local-exec" {
     when    = create
     command = <<EOF
   curl -X POST \
   https://workflowexecutions.googleapis.com/v1/projects/${var.project_id}/locations/${var.workflow_region}/workflows/${google_workflows_workflow.workflow.name}/executions \
-  --header "Authorization: Bearer $(gcloud auth print-access-token ${var.curl_impersonation})" \
+  --header "Authorization: Bearer ${data.google_client_config.current.access_token}" \
   --header "Content-Type: application/json"
 EOF
   }

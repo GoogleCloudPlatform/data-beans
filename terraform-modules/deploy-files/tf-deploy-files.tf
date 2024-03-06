@@ -48,7 +48,6 @@ variable "colab_enterprise_region" {}
 variable "random_extension" {}
 variable "project_number" {}
 variable "deployment_service_account_name" {}
-variable "curl_impersonation" {}
 variable "terraform_service_account" {}
 
 variable "bigquery_data_beans_curated_dataset" {}

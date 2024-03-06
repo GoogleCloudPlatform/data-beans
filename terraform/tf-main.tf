@@ -181,7 +181,6 @@ module "resources" {
   random_extension                    = random_string.project_random.result
   project_number                      = var.project_number == "" ? module.project[0].output-project-number : var.project_number
   deployment_service_account_name     = var.deployment_service_account_name
-  curl_impersonation                  = local.local_curl_impersonation
 
   terraform_service_account           = module.service-account.deployment_service_account
 
@@ -223,7 +222,6 @@ module "sql-scripts" {
   random_extension                    = random_string.project_random.result
   project_number                      = var.project_number == "" ? module.project[0].output-project-number : var.project_number
   deployment_service_account_name     = var.deployment_service_account_name
-  curl_impersonation                  = local.local_curl_impersonation
 
   terraform_service_account           = module.service-account.deployment_service_account
 
@@ -267,7 +265,6 @@ module "deploy-files-module" {
   random_extension                    = random_string.project_random.result
   project_number                      = var.project_number == "" ? module.project[0].output-project-number : var.project_number
   deployment_service_account_name     = var.deployment_service_account_name
-  curl_impersonation                  = local.local_curl_impersonation
 
   terraform_service_account           = module.service-account.deployment_service_account
 
@@ -307,7 +304,6 @@ module "deploy-notebooks-module" {
   workflow_region                     = "us-central1"
   random_extension                    = random_string.project_random.result
   gcp_account_name                    = var.gcp_account_name
-  curl_impersonation                  = local.local_curl_impersonation
 
   depends_on = [
     module.project,
@@ -419,10 +415,6 @@ output "random_string" {
 
 output "local_impersonation_account" {
   value = local.local_impersonation_account
-}
-
-output "local_curl_impersonation" {
-  value = local.local_curl_impersonation
 }
 
 output "local_azure_omni_biglake_connection" {

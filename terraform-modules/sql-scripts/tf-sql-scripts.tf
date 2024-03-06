@@ -48,7 +48,6 @@ variable "colab_enterprise_region" {}
 variable "random_extension" {}
 variable "project_number" {}
 variable "deployment_service_account_name" {}
-variable "curl_impersonation" {}
 variable "terraform_service_account" {}
 
 variable "bigquery_data_beans_curated_dataset" {}
@@ -56,6 +55,8 @@ variable "data_beans_curated_bucket" {}
 variable "data_beans_code_bucket" {}
 variable "data_beans_analytics_hub" {}
 
+data "google_client_config" "current" {
+}
 
 ####################################################################################
 # UDFs
@@ -191,13 +192,14 @@ data "http" "call_sp_initialize" {
 }
 */
 
+
 resource "null_resource" "call_sp_initialize" {
   provisioner "local-exec" {
     when    = create
     command = <<EOF
   curl -X POST \
   https://bigquery.googleapis.com/bigquery/v2/projects/${var.project_id}/jobs \
-  --header "Authorization: Bearer $(gcloud auth print-access-token ${var.curl_impersonation})" \
+  --header "Authorization: Bearer ${data.google_client_config.current.access_token}" \
   --header "Content-Type: application/json" \
   --data '{ "configuration" : { "query" : { "query" : "CALL `${var.project_id}.${var.bigquery_data_beans_curated_dataset}.initialize`();", "useLegacySql" : false } } }'
 EOF
@@ -206,4 +208,3 @@ EOF
     google_bigquery_routine.initialize
   ]
 }
-
