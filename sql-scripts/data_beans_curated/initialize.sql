@@ -153,7 +153,6 @@ LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.locati
 LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu`                           FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/menu/*.avro']);
 LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order_item`                     FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/order_item/*.avro']);
 LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.video_processing`               FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/video_processing/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.weather`                        FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/weather/*.avro']);
 
 
 ------------------------------------------------------------------------------------------------------------
@@ -353,6 +352,21 @@ SELECT sales_forecast_id, DATE_FROM_UNIX_DATE(forecast_date) AS forecast_date, s
   FROM `${project_id}.${bigquery_data_beans_curated_dataset}.load_sales_forecast` ;
 
 DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_sales_forecast`;
+
+
+
+------------------------------------------------------------------------------------------------------------
+-- weather_date DATE
+------------------------------------------------------------------------------------------------------------
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_weather`                        FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/weather/*.avro']);
+
+CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.weather` 
+CLUSTER BY (weather_id)
+AS
+SELECT weather_id, city_id, DATE_FROM_UNIX_DATE(weather_date) AS weather_date, weather_json
+  FROM `${project_id}.${bigquery_data_beans_curated_dataset}.load_weather` ;
+
+DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_weather`;
 
 
 ------------------------------------------------------------------------------------------------------------
