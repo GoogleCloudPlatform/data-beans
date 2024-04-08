@@ -29,19 +29,10 @@
 
 # 2 - Grant your user Owner IAM access to the new project
 
-# 3 - Disable the following Org Policies by hand (or have your IT department do it for you).
-#     These can be disabled at the project level
-#     - requireShieldedVm = false
-#     - allowedPolicyMemberDomains = allow all
-
-# 4 - Run the below script and replace the following variables
+# 3 - Run the below script and replace the following variables
 gcp_account_name="your-name@your-domain.com"
 project_id="my-project"
 project_number="000000000000"
-
-# 5 - When the script is complete, reenable the following Org Policies (or revert to parent policy)
-#     - (DO NOT RE-ENABLE) requireShieldedVm 
-#     - (RE-ENABLE) allowedPolicyMemberDomains 
 
 
 ####################################################################################
