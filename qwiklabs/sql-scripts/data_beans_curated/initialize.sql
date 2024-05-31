@@ -82,31 +82,31 @@ CREATE OR REPLACE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.ma
 
 /*
 -- From storage, copied to local storage account first
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.artifact` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/artifact/artifact_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city/city_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city_location/city_location_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location_address` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city_location_address/city_location_address_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_farm` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_farm/coffee_farm_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_processor` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_processor/coffee_processor_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_roaster` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_roaster/coffee_roaster_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.company` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/company/company_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer/customer_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_profile` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_profile/customer_profile_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_review/customer_review_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_review_gen_ai_insight/customer_review_gen_ai_insight_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.event` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/event/event_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.event_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/event_gen_ai_insight/event_gen_ai_insight_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.location` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/location/location_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.location_history` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/location_history/location_history_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.marketing_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/marketing_gen_ai_insight/marketing_gen_ai_insight_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/menu/menu_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu_a_b_testing` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/menu_a_b_testing/menu_a_b_testing_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/order/order_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order_item` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/order_item/order_item_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.sales_forecast` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/sales_forecast/sales_forecast_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.video_processing` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/video_processing/video_processing_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.weather` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/weather/weather_*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.weather_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/weather_gen_ai_insight/weather_gen_ai_insight_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.artifact` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/artifact/artifact_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city/city_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city_location/city_location_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location_address` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/city_location_address/city_location_address_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_farm` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_farm/coffee_farm_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_processor` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_processor/coffee_processor_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_roaster` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/coffee_roaster/coffee_roaster_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.company` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/company/company_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer/customer_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_profile` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_profile/customer_profile_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_review/customer_review_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review_gen_ai_insight` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/customer_review_gen_ai_insight/customer_review_gen_ai_insight_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.event` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/event/event_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.event_gen_ai_insight` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/event_gen_ai_insight/event_gen_ai_insight_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.location` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/location/location_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.location_history` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/location_history/location_history_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.marketing_gen_ai_insight` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/marketing_gen_ai_insight/marketing_gen_ai_insight_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/menu/menu_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu_a_b_testing` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/menu_a_b_testing/menu_a_b_testing_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/order/order_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order_item` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/order_item/order_item_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.sales_forecast` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/sales_forecast/sales_forecast_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.video_processing` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/video_processing/video_processing_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.weather` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/weather/weather_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.weather_gen_ai_insight` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://${data_beans_curated_bucket}/data-beans/v1/export/weather_gen_ai_insight/weather_gen_ai_insight_*.avro']);
 */
 
 
@@ -125,6 +125,7 @@ DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.custo
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.customer_profile`;
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review`;
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review_gen_ai_insight`;
+DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.event`;
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.event_gen_ai_insight`;
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.location`;
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.location_history`;
@@ -137,6 +138,20 @@ DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.sales
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.video_processing`;
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.weather`;
 DROP TABLE IF EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.weather_gen_ai_insight`;
+
+
+------------------------------------------------------------------------------------------------------------
+-- Load tables without any AVRO datatype conversion
+------------------------------------------------------------------------------------------------------------
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.artifact`                       FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/artifact/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location`                  FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/city_location/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location_address`          FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/city_location_address/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.company`                        FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/company/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_profile`               FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/customer_profile/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.location`                       FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/location/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu`                           FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/menu/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order_item`                     FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/order_item/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.video_processing`               FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/video_processing/*.avro']);
 
 
 ------------------------------------------------------------------------------------------------------------
@@ -154,24 +169,9 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_event`;
 
 
 ------------------------------------------------------------------------------------------------------------
--- Load tables without any AVRO datatype conversion
-------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.artifact`                       FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/artifact/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location`                  FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/city_location/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.city_location_address`          FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/city_location_address/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.company`                        FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/company/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_profile`               FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/customer_profile/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.event`                          FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/event/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.location`                       FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/location/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.menu`                           FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/menu/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.order_item`                     FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/order_item/*.avro']);
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.video_processing`               FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/video_processing/*.avro']);
-
-
-------------------------------------------------------------------------------------------------------------
 -- Geography: ST_GEOGPOINT(longitude, latitude) AS lat_long
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_city`                      FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/city/city_*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_city`                      FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/city/city_*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.city` 
 CLUSTER BY (city_id)
@@ -185,7 +185,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_city`;
 ------------------------------------------------------------------------------------------------------------
 -- Geography: ST_GEOGPOINT(longitude, latitude) AS lat_long
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_farm`                    FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/coffee_farm/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_farm`                    FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/coffee_farm/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_farm` 
 CLUSTER BY (coffee_farm_id)
@@ -199,7 +199,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_far
 ------------------------------------------------------------------------------------------------------------
 -- Geography: ST_GEOGPOINT(longitude, latitude) AS lat_long
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_processor`                    FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/coffee_processor/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_processor`                    FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/coffee_processor/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_processor` 
 CLUSTER BY (coffee_processor_id)
@@ -214,7 +214,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_pro
 ------------------------------------------------------------------------------------------------------------
 -- Geography: ST_GEOGPOINT(longitude, latitude) AS lat_long
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_roaster`                 FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/coffee_roaster/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_roaster`                 FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/coffee_roaster/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.coffee_roaster` 
 CLUSTER BY (coffee_roaster_id)
@@ -228,7 +228,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_coffee_roa
 ------------------------------------------------------------------------------------------------------------
 -- Date: customer_inception_date
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer`                       FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/customer/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer`                       FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/customer/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.customer` 
 CLUSTER BY (customer_id)
@@ -244,7 +244,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer`;
 ------------------------------------------------------------------------------------------------------------
 -- review_datetime TIMESTAMP
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer_review`                FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/customer_review/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer_review`                FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/customer_review/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review` 
 CLUSTER BY (customer_review_id)
@@ -261,7 +261,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer_r
 ------------------------------------------------------------------------------------------------------------
 -- insight_datetime TIMESTAMP
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer_review_gen_ai_insight` FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/customer_review_gen_ai_insight/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer_review_gen_ai_insight` FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/customer_review_gen_ai_insight/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.customer_review_gen_ai_insight` 
 CLUSTER BY (customer_review_gen_ai_insight_id)
@@ -276,7 +276,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_customer_r
 ------------------------------------------------------------------------------------------------------------
 -- insight_datetime TIMESTAMP
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_event_gen_ai_insight`           FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/event_gen_ai_insight/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_event_gen_ai_insight`           FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/event_gen_ai_insight/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.event_gen_ai_insight` 
 CLUSTER BY (event_gen_ai_insight_id)
@@ -291,7 +291,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_event_gen_
 ------------------------------------------------------------------------------------------------------------
 -- Has Geo location_history / Datetime
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_location_history`               FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/location_history/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_location_history`               FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/location_history/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.location_history` 
 CLUSTER BY (location_history_id)
@@ -310,7 +310,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_location_h
 ------------------------------------------------------------------------------------------------------------
 -- insight_datetime TIMESTAMP
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_marketing_gen_ai_insight`       FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/marketing_gen_ai_insight/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_marketing_gen_ai_insight`       FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/marketing_gen_ai_insight/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.marketing_gen_ai_insight` 
 CLUSTER BY (marketing_gen_ai_insight_id)
@@ -325,7 +325,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_marketing_
 ------------------------------------------------------------------------------------------------------------
 -- create_date TIMESTAMP
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_menu_a_b_testing`               FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/menu_a_b_testing/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_menu_a_b_testing`               FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/menu_a_b_testing/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.menu_a_b_testing` 
 CLUSTER BY (menu_a_b_testing_id)
@@ -342,7 +342,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_menu_a_b_t
 ------------------------------------------------------------------------------------------------------------
 -- TIMESTAMP
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_order`                          FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/order/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_order`                          FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/order/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.order` 
 CLUSTER BY (order_id)
@@ -356,7 +356,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_order`;
 ------------------------------------------------------------------------------------------------------------
 -- sales_forecast has DATE - might be okay
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_sales_forecast`                 FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/sales_forecast/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_sales_forecast`                 FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/sales_forecast/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.sales_forecast` 
 CLUSTER BY (sales_forecast_id)
@@ -371,7 +371,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_sales_fore
 ------------------------------------------------------------------------------------------------------------
 -- weather_date DATE
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_weather`                        FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/weather/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_weather`                        FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/weather/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.weather` 
 CLUSTER BY (weather_id)
@@ -385,7 +385,7 @@ DROP TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.load_weather`;
 ------------------------------------------------------------------------------------------------------------
 -- insight_datetime TIMESTAMP
 ------------------------------------------------------------------------------------------------------------
-LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_weather_gen_ai_insight`         FROM FILES ( format = 'AVRO', uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/weather_gen_ai_insight/*.avro']);
+LOAD DATA OVERWRITE `${project_id}.${bigquery_data_beans_curated_dataset}.load_weather_gen_ai_insight`         FROM FILES ( format = 'AVRO', enable_logical_types = false, uris = ['gs://data-analytics-golden-demo/data-beans/v1/export/weather_gen_ai_insight/*.avro']);
 
 CREATE TABLE `${project_id}.${bigquery_data_beans_curated_dataset}.weather_gen_ai_insight` 
 CLUSTER BY (weather_gen_ai_insight_id)
