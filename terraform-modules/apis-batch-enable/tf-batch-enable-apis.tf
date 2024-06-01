@@ -350,8 +350,3 @@ resource "google_project_service" "service-workflows" {
   project = var.project_id
   service = "workflows.googleapis.com"
 }
-
-resource "google_project_service" "service-texttospeech" {
-  project = var.project_id
-  service = "texttospeech.googleapis.com"
-}
