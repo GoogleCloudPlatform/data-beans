@@ -14,7 +14,7 @@ Recipes are lightweight autocontained demos that showcase different Google Cloud
 
 To create a new recipe, follow these steps:
 
-1.  Create a new folder in the `recipes` directory.
-2.  Give the folder a name that describes the recipe.
-3.  Add your code inside, usually that would be a notebook, an architecture diagram and a README file
-4.  Update the index section of this file
+1. Create a new folder in the `recipes` directory.
+2. Give the folder a name that describes the recipe.
+3. Add your code inside, usually that would be a notebook, an architecture diagram and a README file
+4. Update the index section of this file
