@@ -34,14 +34,6 @@ Clean up / Reset script:
 ------------------------------------------------------------------------------------------------------------
 -- Create GenAI / Vertex AI connections
 ------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE MODEL `${project_id}.${bigquery_data_beans_curated_dataset}.llm_model`
-  REMOTE WITH CONNECTION `${project_id}.us.vertex-ai`
-  OPTIONS (endpoint = 'text-bison@002');
-
-CREATE OR REPLACE MODEL `${project_id}.${bigquery_data_beans_curated_dataset}.llm_model_32k`
-  REMOTE WITH CONNECTION `${project_id}.us.vertex-ai`
-  OPTIONS (endpoint = 'text-bison-32k@002');
-
 CREATE MODEL IF NOT EXISTS `${project_id}.${bigquery_data_beans_curated_dataset}.gemini_pro`
   REMOTE WITH CONNECTION `${project_id}.us.vertex-ai`
   OPTIONS (endpoint = 'gemini-pro');
