@@ -61,51 +61,6 @@ data "google_client_config" "current" {
 ####################################################################################
 # UDFs
 ####################################################################################
-resource "google_bigquery_routine" "clean_llm_json" {
-  project         = var.project_id
-  dataset_id      = var.bigquery_data_beans_curated_dataset
-  routine_id      = "clean_llm_json"
-  routine_type    = "SCALAR_FUNCTION"
-  language        = "SQL"
-
-  definition_body = templatefile("../sql-scripts/data_beans_curated/clean_llm_json.sql", 
-  { 
-    project_id = var.project_id
-    bigquery_data_beans_curated_dataset = var.bigquery_data_beans_curated_dataset
-  })
-
-  arguments {
-    name          = "input"
-    argument_kind = "FIXED_TYPE"
-    data_type     = jsonencode({ "typeKind" : "JSON" })
-  }
-
-  return_type = "{\"typeKind\" :  \"JSON\"}"
-}
-
-resource "google_bigquery_routine" "clean_llm_text" {
-  project         = var.project_id
-  dataset_id      = var.bigquery_data_beans_curated_dataset
-  routine_id      = "clean_llm_text"
-  routine_type    = "SCALAR_FUNCTION"
-  language        = "SQL"
-
-  definition_body = templatefile("../sql-scripts/data_beans_curated/clean_llm_text.sql", 
-  { 
-    project_id = var.project_id
-    bigquery_data_beans_curated_dataset = var.bigquery_data_beans_curated_dataset
-  })
-
-  arguments {
-    name          = "input"
-    argument_kind = "FIXED_TYPE"
-    data_type     = jsonencode({ "typeKind" : "JSON" })
-  }
-  
-  return_type = "{\"typeKind\" :  \"STRING\"}"
-}
-
-
 resource "google_bigquery_routine" "clean_llmgemini_pro_result_as_json_json" {
   project         = var.project_id
   dataset_id      = var.bigquery_data_beans_curated_dataset
