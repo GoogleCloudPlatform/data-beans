@@ -1,6 +1,6 @@
 # Data-Beans-Demo
 
-Welcome to Data Beans, a fiticous company that has a fleet of coffee trucks located in cities around the world.  The source code provided here is design to high how you can use GenAI along with BigQuery on Google Cloud.  The code is all working and was used to construct the demo.  The demo consists of a web frontend along with the backend code contained in the project.  To see the frontend, currently is it not deployed as part of the demo, please contact your account team or customer engienner.
+Welcome to Data Beans, a fiticous company that has a fleet of coffee trucks located in cities around the world.  The source code provided here is design to high how you can use GenAI along with BigQuery on Google Cloud.  The code is all working and was used to construct the demo.  The demo consists of a web frontend along with the backend code contained in the project.  The frontend code is not part of this repository. To see the frontend demo please contact your account team or customer engineer.
 
 This demo is an end to end working demo with all code provided so you can use based upon the contained license agreement.
 
