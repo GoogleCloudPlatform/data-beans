@@ -25,7 +25,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google-beta"
-      version = ">= 4.52, < 6"
+      version = "5.35.0"
     }
   }
 }
@@ -169,6 +169,29 @@ resource "google_bigquery_dataset" "google_bigquery_dataset_data_beans_curated" 
   friendly_name = var.bigquery_data_beans_curated_dataset
   description   = "This dataset contains the curated data for the data beans demo."
   location      = var.multi_region
+}
+
+
+####################################################################################
+# IAM for cloud build
+####################################################################################
+# Needed per https://cloud.google.com/build/docs/cloud-build-service-account-updates
+resource "google_project_iam_member" "cloudfunction_builder" {
+  project = var.project_id
+  role    = "roles/cloudbuild.builds.builder"
+  member  = "serviceAccount:${var.project_number}-compute@developer.gserviceaccount.com"
+}
+
+# Needed per https://cloud.google.com/build/docs/cloud-build-service-account-updates
+# Allow cloud function service account to read storage [V2 Function]
+resource "google_project_iam_member" "cloudfunction_objectViewer" {
+  project = var.project_id
+  role    = "roles/storage.objectViewer"
+  member  = "serviceAccount:${var.project_number}-compute@developer.gserviceaccount.com"
+
+  depends_on = [
+    google_project_iam_member.cloudfunction_builder
+  ]
 }
 
 
