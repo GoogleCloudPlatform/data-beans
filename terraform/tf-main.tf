@@ -46,7 +46,7 @@ terraform {
   required_providers {
     google = {
       source                = "hashicorp/google-beta"
-      version               = ">= 4.52, < 6"
+      version               = ">= 4.52, <= 7.3.0"
       configuration_aliases = [google.service_principal_impersonation]
     }
   }
@@ -286,10 +286,10 @@ module "deploy-files-module" {
 
 
 ####################################################################################
-# Deploy notebooks to Colab (Dataform)
+# Deploy notebooks to Colab -> Create the Dataform repo and files (base64 encoded)
 ####################################################################################
-module "deploy-notebooks-module" {
-  source = "../terraform-modules/colab-deployment/terraform-module"
+module "deploy-notebooks-module-create-files" {
+  source = "../terraform-modules/colab-deployment-create-files"
 
   # Use Service Account Impersonation for this step. 
   providers = { google = google.service_principal_impersonation }
@@ -314,6 +314,39 @@ module "deploy-notebooks-module" {
     module.resources
   ]
 }
+
+####################################################################################
+# Deploy notebooks to Colab -> Push the notebooks
+# This is done since there is a race condition when the files are base64 encoded
+####################################################################################
+module "deploy-notebooks-module-deploy" {
+  source = "../terraform-modules/colab-deployment-deploy"
+
+  # Use Service Account Impersonation for this step. 
+  providers = { google = google.service_principal_impersonation }
+
+  project_id                          = local.local_project_id
+  vertex_ai_region                    = var.vertex_ai_region
+  bigquery_data_beans_curated_dataset = var.bigquery_data_beans_curated_dataset
+  data_beans_curated_bucket           = local.data_beans_curated_bucket
+  data_beans_code_bucket              = local.code_bucket
+  dataform_region                     = "us-central1"
+  cloud_function_region               = "us-central1"
+  workflow_region                     = "us-central1"
+  random_extension                    = random_string.project_random.result
+  gcp_account_name                    = var.gcp_account_name
+
+  depends_on = [
+    module.project,
+    module.service-account,
+    module.apis-batch-enable,
+    time_sleep.service_account_api_activation_time_delay,
+    module.org-policies,
+    module.resources,
+    module.deploy-notebooks-module-create-files
+  ]
+}
+
 
 
 
