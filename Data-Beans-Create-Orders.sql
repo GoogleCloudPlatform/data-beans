@@ -211,8 +211,8 @@ DROP TABLE `PROJECT-ID.coffee_curated.load_order`;
 
 -- DELETE (by hand)
 
-gsutil cp gs://PROJECT-ID/data-beans/v1/export/order/* gs://data-analytics-golden-demo/data-beans/v1/export/order/
-gsutil cp gs://PROJECT-ID/data-beans/v1/export/order_item/* gs://data-analytics-golden-demo/data-beans/v1/export/order_item/
+gcloud storage cp gs://PROJECT-ID/data-beans/v1/export/order/* gs://data-analytics-golden-demo/data-beans/v1/export/order/
+gcloud storage cp gs://PROJECT-ID/data-beans/v1/export/order_item/* gs://data-analytics-golden-demo/data-beans/v1/export/order_item/
 
 
 
