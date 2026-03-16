@@ -28,3 +28,4 @@ qwiklabs/qwiklabs.zip
 Veo3.txt
 terraform-modules/colab-deployment-create-files/notebooks/*
 terraform-modules/colab-deployment-create-files/notebooks_base64/*
+.antigravity/schema.json
