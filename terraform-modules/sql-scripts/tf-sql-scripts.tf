@@ -55,9 +55,6 @@ variable "data_beans_curated_bucket" {}
 variable "data_beans_code_bucket" {}
 variable "data_beans_analytics_hub" {}
 
-data "google_client_config" "current" {
-}
-
 ####################################################################################
 # UDFs
 ####################################################################################
@@ -129,32 +126,13 @@ resource "google_bigquery_routine" "initialize" {
 ####################################################################################
 # Invoke Initalize SP
 ####################################################################################
-/* THIS RUNS OVER AND OVER AGAIN (for each TF execution) WHICH WILL OVERWRITE THE DATA
-data "google_client_config" "current" {
-}
-
-# Call the BigQuery initialize stored procedure to initialize the system
-data "http" "call_sp_initialize" {
-  url    = "https://bigquery.googleapis.com/bigquery/v2/projects/${var.project_id}/jobs"
-  method = "POST"
-  request_headers = {
-    Accept = "application/json"
-  Authorization = "Bearer ${data.google_client_config.current.access_token}" }
-  request_body = "{\"configuration\":{\"query\":{\"query\":\"CALL `${var.project_id}.${var.bigquery_data_beans_curated_dataset}.initialize`();\",\"useLegacySql\":false}}}"
-  depends_on = [
-     google_bigquery_routine.initialize
-  ]
-}
-*/
-
-
 resource "null_resource" "call_sp_initialize" {
   provisioner "local-exec" {
     when    = create
     command = <<EOF
   curl -X POST \
   https://bigquery.googleapis.com/bigquery/v2/projects/${var.project_id}/jobs \
-  --header "Authorization: Bearer ${data.google_client_config.current.access_token}" \
+  --header "Authorization: Bearer $(gcloud auth print-access-token --impersonate-service-account=${var.terraform_service_account})" \
   --header "Content-Type: application/json" \
   --data '{ "configuration" : { "query" : { "query" : "CALL `${var.project_id}.${var.bigquery_data_beans_curated_dataset}.initialize`();", "useLegacySql" : false } } }'
 EOF

@@ -37,10 +37,7 @@ variable "cloud_function_region" {}
 variable "workflow_region" {}
 variable "random_extension" {}
 variable "gcp_account_name" {}
-
-
-data "google_client_config" "current" {
-}
+variable "terraform_service_account" {}
 
 
 # Define the list of notebook files to be created
@@ -66,7 +63,7 @@ resource "null_resource" "commit_data_analytics_agent_notebooks" {
     command = <<EOF
 curl -X POST \
   https://dataform.googleapis.com/v1beta1/projects/${var.project_id}/locations/${var.dataform_region}/repositories/${replace(local.data_analytics_agent_notebooks[count.index], ".ipynb", "")}:commit \
-  --header "Authorization: Bearer ${data.google_client_config.current.access_token}" \
+  --header "Authorization: Bearer $(gcloud auth print-access-token --impersonate-service-account=${var.terraform_service_account})" \
   --header "Content-Type: application/json" \
   --compressed \
   --data "@../terraform-modules/colab-deployment-create-files/notebooks_base64/${local.data_analytics_agent_notebooks[count.index]}.base64"

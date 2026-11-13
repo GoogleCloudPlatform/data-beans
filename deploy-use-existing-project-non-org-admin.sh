@@ -76,15 +76,6 @@ then
     gcloud storage cp tf-output.json "gs://${terraform_output_bucket}/terraform/output/"
   fi
 
-  # Copy TF State file - Check to see if the user did not specify an output bucket
-  if [[ $terraform_output_bucket == *"Error"* ]]; 
-  then
-    echo "No terraform_output_bucket specified.  Not copying Terraform State file"
-  else
-    echo "Copying terraform.tfstate: gcloud storage cp terraform.tfstate gs://${terraform_output_bucket}/terraform/state/"
-    gcloud storage cp terraform.tfstate "gs://${terraform_output_bucket}/terraform/state/"
-  fi
-
 fi
 
 cd ..

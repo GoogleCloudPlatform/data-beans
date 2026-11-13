@@ -335,6 +335,7 @@ module "deploy-notebooks-module-deploy" {
   workflow_region                     = "us-central1"
   random_extension                    = random_string.project_random.result
   gcp_account_name                    = var.gcp_account_name
+  terraform_service_account           = module.service-account.deployment_service_account
 
   depends_on = [
     module.project,

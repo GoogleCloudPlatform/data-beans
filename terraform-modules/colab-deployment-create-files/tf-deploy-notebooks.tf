@@ -38,9 +38,6 @@ variable "workflow_region" {}
 variable "random_extension" {}
 variable "gcp_account_name" {}
 
-data "google_client_config" "current" {
-}
-
 
 # Define the list of notebook files to be created
 locals {
